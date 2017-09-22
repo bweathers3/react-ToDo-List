@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Welcome to Bloc</title>
+    <title>Your ToDo List</title>
   </head>
   <body>
 
-    <div id="app"></div>
+    <div id="react-container"></div>
 
+    <!-- React and ReactDom Libaries-->
     <script src="https://fb.me/react-15.0.0.js"></script>
     <script src="https://fb.me/react-dom-15.0.0.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
@@ -14,6 +15,26 @@
 
     <script type="text/babel">
 
+      class Todo extends React.Component {
+        render() {
+          return (
+            <div>
+              <h1>Your React ToDo Lists!</h1>
+              <p>Current Date: {this.props.date.toLocaleDateString()}</p>
+            </div>
+          );
+        }
+      }
+
+
+      const info = {
+        date: new Date(),
+      }
+
+      ReactDOM.render(
+        <Todo
+        date={info.date}/>,document.getElementById('react-container')
+      );
 
 
     </script>
