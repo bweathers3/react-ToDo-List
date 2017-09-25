@@ -5,6 +5,42 @@
 
     <style>
 
+      body {
+        padding: 100px 350px;
+        background-color: #66CCFF;
+        font-family: sans-serif;
+      }
+      .todoListMain .header input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #FFF;
+      }
+      .todoListMain .header button {
+        padding: 10px;
+        font-size: 16px;
+        margin: 10px;
+        background-color: #0066FF;
+        color: #FFF;
+        border: 2px solid #0066FF;
+      }
+      .todoListMain .header button:hover {
+        background-color: #003399;
+        border: 2px solid #003399;
+        cursor: pointer;
+      }
+      .todoListMain .theList {
+        list-style: none;
+        padding-left: 0;
+        width: 255px;
+      }
+      .todoListMain .theList li {
+        color: #333;
+        background-color: rgba(255,255,255,.5);
+        padding: 15px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+      }
+
     </style>
   </head>
   <body>
@@ -68,7 +104,7 @@
         render: function() {
           return (
             <div className="todoListMain">
-            <h1>Your React ToDo Lists!</h1>
+            <h1>Your React ToDo List!</h1>
             <p>Current Date: {this.state.date.toLocaleDateString()}</p>
               <div className="header">
                 <form onSubmit={this.addItem}>
