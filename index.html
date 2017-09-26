@@ -4,7 +4,7 @@
     <title>Your ToDo List</title>
 
     <style>
-
+     /*  React convention is to put css in the html */
       body {
         padding: 100px 350px;
         background-color: #66CCFF;
@@ -44,7 +44,7 @@
     </style>
   </head>
   <body>
-
+    <!-- react page container -->
     <div id="react-container"></div>
 
     <!-- React and ReactDom Libaries-->
@@ -54,19 +54,19 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script> -->
 
     <script type="text/babel">
-
+      /* page varible = react page container */
       var page = document.querySelector("#react-container");
-
+      /* display items */
       var TodoItems = React.createClass({
         render: function() {
           var todoEntries = this.props.entries;
-
+          /* createTasks function creates a timestamped (key) item */
           function createTasks(item) {
             return <li key={item.key}>{item.text}</li>
           }
-
+          /* page varible = react page container */
           var listItems = todoEntries.map(createTasks);
-
+          /* returnes an order list of items */
           return (
             <ul className="theList">
               {listItems}
@@ -76,31 +76,34 @@
       });
 
       var TodoList = React.createClass({
+        /* intialize state of empty array and date */
         getInitialState: function() {
           return {
             items: [],
             date: new Date()
           };
         },
+        /* addItem event handler = push item to array with key(timestampe) */
         addItem: function(e) {
+          /* array itemArray stores reference to state of items */
           var itemArray = this.state.items;
-
+          /* push item to array with key(timestampe) */
           itemArray.push(
             {
           text: this.inputItem.value,
           key: Date.now()
         }
       );
-
+        /* set state items property */
         this.setState({
           items: itemArray
         });
 
         this.inputItem.value = "";
-
+        /* prevent default action by browser like refreashing the page */
         e.preventDefault();
         },
-
+        /* UI */
         render: function() {
           return (
             <div className="todoListMain">
@@ -118,7 +121,7 @@
           );
         }
       });
-
+      /* call todolist in page */
       ReactDOM.render(
           <div>
             <TodoList/>
